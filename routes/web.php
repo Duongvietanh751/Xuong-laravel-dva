@@ -1,6 +1,7 @@
 <?php
+
+use App\Http\Controllers\Admin\CatalogueController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,7 @@ Route::get('/', function () {
 //
 //Route::get('auth/register', [RegisterController::class , 'showFormRegister'])->name('register');
 //Route::post('auth/register', [RegisterController::class , 'register']);
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
