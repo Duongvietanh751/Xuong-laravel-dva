@@ -1,18 +1,103 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title',config('app.name'))</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <meta charset="utf-8" />
+    <title>@yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{asset('theme/admin/assets/images/favicon.ico')}}">
+
+    <!-- jsvectormap css -->
+    <link href="{{asset('theme/admin/assets/libs/jsvectormap/css/jsvectormap.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <!--Swiper slider css-->
+    <link href="{{asset('theme/admin/assets/libs/swiper/swiper-bundle.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <!-- Layout config Js -->
+    <script src="{{asset('theme/admin/assets/js/layout.js')}}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{{asset('theme/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{asset('theme/admin/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{asset('theme/admin/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{{asset('theme/admin/assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+
 </head>
+
 <body>
-<div class="container">
-    <h1 class="mt-5 mb-3">@yield('title')</h1>
-    <div class="row">
-        @yield('content')
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+   @include('admin.layouts.header');
+
+    <!-- ========== App Menu ========== -->
+@include('admin.layouts.silebar');
+    <!-- Left Sidebar End -->
+    <!-- Vertical Overlay-->
+    <div class="vertical-overlay"></div>
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+                            @yield('content')
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        @include('admin.layouts.footer');
+    </div>
+    <!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+
+
+<!--start back-to-top-->
+<button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+    <i class="ri-arrow-up-line"></i>
+</button>
+<!--end back-to-top-->
+
+<!--preloader-->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner-border text-primary avatar-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<div class="customizer-setting d-none d-md-block">
+    <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas" data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
+        <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
+    </div>
+</div>
+
+<script>
+    const PATH_ROOT='{{asset('theme/admin')}}/';
+</script>
+<!-- JAVASCRIPT -->
+<script src="{{asset('theme/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('theme/admin/assets/libs/simplebar/simplebar.min.js')}}"></script>
+<script src="{{asset('theme/admin/assets/libs/node-waves/waves.min.js')}}"></script>
+<script src="{{asset('theme/admin/assets/libs/feather-icons/feather.min.js')}}"></script>
+<script src="{{asset('theme/admin/assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
+<script src="{{asset('theme/admin/assets/js/plugins.js')}}"></script>
+
+@yield('script-libs')
+<!-- App js -->
+<script src="{{asset('theme/admin/assets/js/app.js')}}"></script>
 </body>
+
 </html>

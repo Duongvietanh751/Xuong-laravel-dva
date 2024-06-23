@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Admin\CatalogueController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,7 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable =[
+        'catelogue_id',
         'name',
         'slug',
         'sku',
@@ -33,4 +35,12 @@ class Product extends Model
         'is_new'=>'boolean',
         'is_show_home'=>'boolean',
     ];
+    public function catelogue()
+    {
+        return $this->belongsTo(Catelogue::class);
+    }
+    public  function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }
